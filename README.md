@@ -51,3 +51,13 @@ Run the tests:
 Report test coverage (exports an HTML report to the `codecov/` folder):
 
     $ deno test --coverage=codecov
+
+## Was habe ich gemacht:
+
+### Aufgabe 3
+
+1. cli-test.sh in einem Neuen Ordner anlegen.
+2. Readme anschauen und alles ausführen.
+3. exchange-rates.json anachauen.
+4. Nun müssen cli.ts und conversion.ts für komplettes verständniss.
+5. Erster Testfall definieren und ausführen.
