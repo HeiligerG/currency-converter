@@ -76,3 +76,4 @@ Report test coverage (exports an HTML report to the `codecov/` folder):
 7. der main loop und der erste test.
 8. Nächsten 2 Tests erstellen, komandozeilen ki hilft sehr da es fiel gleich aus den files lesen kann.
 9. Die nächsten beiden Tests definieren.
+10. und schlussentlich die letzten beiden funktionen definieren.

@@ -123,6 +123,20 @@ else
     ((fail++))
 fi
 
+# Test 6: DELETE /rate/usd/eur
+if run_test "DELETE rate" "DELETE" "$base_url/rate/usd/eur" "" "204" "" "$auth"; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
+# Test 7: GET /conversion/usd/eur/100 (nach entfernen)
+if run_test "Conversion after delete" "GET" "$base_url/conversion/usd/eur/100" "" "404" "" ""; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
 stop_server
 echo "Pass: $pass, Fail: $fail"
 [ $fail -eq 0 ]
