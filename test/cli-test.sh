@@ -41,6 +41,13 @@ else
     ((fail++))
 fi
 
+# Test 3: chf -> usd (reverse)
+if run_test "deno run --allow-read ../src/cli.ts --rates ../exchange-rates.json --from chf --to usd --amount 100" "123.45679012345678"; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
 echo "Pass: $pass, Fail: $fail"
 if [ $fail -eq 0 ]; then
     exit 0

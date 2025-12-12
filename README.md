@@ -61,3 +61,6 @@ Report test coverage (exports an HTML report to the `codecov/` folder):
 3. exchange-rates.json anachauen.
 4. Nun müssen cli.ts und conversion.ts für komplettes verständniss.
 5. Erster Testfall definieren und ausführen.
+6. Erstelle die 3 Weiteren Testfälle und führe diese aus.
+7. Erkenne wie viel code abdeckung: -
+8. 
