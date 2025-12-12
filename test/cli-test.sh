@@ -34,6 +34,13 @@ else
     ((fail++))
 fi
 
+# Test 2: eur -> chf
+if run_test "deno run --allow-read ../src/cli.ts --rates ../exchange-rates.json --from eur --to chf --amount 200" "188"; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
 echo "Pass: $pass, Fail: $fail"
 if [ $fail -eq 0 ]; then
     exit 0
