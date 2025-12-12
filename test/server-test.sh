@@ -34,3 +34,52 @@ stop_server() {
     kill $server_pid 2>/dev/null
     wait $server_pid 2>/dev/null
 }
+
+
+# big ass funktion zum runnen von testcases
+run_test() {
+    local description="$1"
+    local method="$2"
+    local url="$3"
+    local data="$4"
+    local expected_status="$5"
+    local expected_json="$6"
+    local auth_param="$7"
+    
+    local curl_cmd="curl -s -X $method"
+    if [ -n "$auth_param" ]; then
+        curl_cmd="$curl_cmd -u $auth_param"
+    fi
+    if [ -n "$data" ]; then
+        curl_cmd="$curl_cmd -d '$data' -H 'Content-Type: application/json'"
+    fi
+    curl_cmd="$curl_cmd -w '%{http_code}' $url"
+    
+    local output
+    output=$(eval "$curl_cmd" 2>/dev/null)
+    local status=${output: -3}
+    local body=${output%???}
+    
+    if [ "$status" != "$expected_status" ]; then
+        echo "FAIL: $description - Status $status erwartet $expected_status"
+        return 1
+    fi
+    
+    if [ -n "$expected_json" ]; then
+        local rate=$(echo "$body" | jq -r '.rate // .result // empty')
+        if [ -n "$rate" ]; then
+            if ! compare_float "$rate" "$expected_json"; then
+                echo "FAIL: $description - Wert $rate erwartet $expected_json"
+                return 1
+            fi
+        else
+            local expected_body=$(echo "$expected_json" | jq -c .)
+            if [ "$body" != "$expected_body" ]; then
+                echo "FAIL: $description - JSON nicht gleich"
+                return 1
+            fi
+        fi
+    fi
+    return 0
+}
+
