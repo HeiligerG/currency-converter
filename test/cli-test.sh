@@ -48,6 +48,13 @@ else
     ((fail++))
 fi
 
+# Test 4: usd -> gbp (unbekannte währung)
+if run_test "deno run --allow-read ../src/cli.ts --rates ../exchange-rates.json --from usd --to gbp --amount 100" "undefined"; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
 echo "Pass: $pass, Fail: $fail"
 if [ $fail -eq 0 ]; then
     exit 0
