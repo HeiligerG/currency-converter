@@ -71,4 +71,7 @@ Report test coverage (exports an HTML report to the `codecov/` folder):
 2. routing.ts, endpoints.ts, http.ts, server.ts anschauen und verstehen.
 3. Server starten: deno run --allow-net src/server.ts
 4. Base setup
-5. 
+5. Dann Server management funktion also start stop usw.
+6. Dann big ass funktion zum test runnen
+7. der main loop und der erste test.
+8. Nächsten 2 Tests

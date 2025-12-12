@@ -83,3 +83,18 @@ run_test() {
     return 0
 }
 
+# main
+start_server
+pass=0
+fail=0
+
+# Test 1: PUT /rate/usd/eur/0.85
+if run_test "PUT rate" "PUT" "$base_url/rate/usd/eur/0.85" "" "201" "" "$auth"; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
+stop_server
+echo "Pass: $pass, Fail: $fail"
+[ $fail -eq 0 ]
