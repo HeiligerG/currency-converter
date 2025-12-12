@@ -95,6 +95,20 @@ else
     ((fail++))
 fi
 
+# Test 2: GET /rate/usd/eur
+if run_test "GET known rate" "GET" "$base_url/rate/usd/eur" "" "200" "0.85" ""; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
+# Test 3: GET /rate/usd/gbp (unbekannt)
+if run_test "GET unknown rate" "GET" "$base_url/rate/usd/gbp" "" "404" "" ""; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
 stop_server
 echo "Pass: $pass, Fail: $fail"
 [ $fail -eq 0 ]
