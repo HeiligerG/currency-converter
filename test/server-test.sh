@@ -109,6 +109,20 @@ else
     ((fail++))
 fi
 
+# Test 4: GET /conversion/usd/eur/100
+if run_test "Conversion known" "GET" "$base_url/conversion/usd/eur/100" "" "200" "85" ""; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
+# Test 5: GET /conversion/eur/usd/100 (reverse)
+if run_test "Conversion reverse" "GET" "$base_url/conversion/eur/usd/100" "" "200" "117.64705882352942" ""; then
+    ((pass++))
+else
+    ((fail++))
+fi
+
 stop_server
 echo "Pass: $pass, Fail: $fail"
 [ $fail -eq 0 ]

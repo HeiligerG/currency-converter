@@ -74,4 +74,5 @@ Report test coverage (exports an HTML report to the `codecov/` folder):
 5. Dann Server management funktion also start stop usw.
 6. Dann big ass funktion zum test runnen
 7. der main loop und der erste test.
-8. Nächsten 2 Tests
+8. Nächsten 2 Tests erstellen, komandozeilen ki hilft sehr da es fiel gleich aus den files lesen kann.
+9. Die nächsten beiden Tests definieren.
